@@ -33,7 +33,10 @@ The CLI tool comes with several commands to help you manage your projects and ge
   - **alias** : `cp`
 - **`generate-api`** - A sample command to generate an APIs. `(Beta)`
   - **alias** : `ga`
-  - **notes** : please copy the route to your routes manually **!for now**.
+  - **notes** : please copy the route to your routes manually
+- **`generate-model`** - A sample command to generate a model.
+  - **alias** : `gm`
+  - notes : please copy only prisma is suported currently.
 
 All commands are located in the `src/commands/` folder. This organization makes it easy to find and modify commands or add new ones as needed.
 
@@ -69,7 +72,7 @@ This cli comes with several predefined scripts to help with development:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/backend-builder.git
+   git clone https://github.com/kiridharan/quickrstack.git
    ```
 2. Navigate to the project directory:
    ```bash
