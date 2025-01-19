@@ -21,6 +21,33 @@
 
 ---
 
+## Local CLI Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/kiridharan/quickrstack.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd quickrstack
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Run the tool:
+   ```bash
+   npm link
+   ```
+5. Now you can run the tool from anywhere in your terminal using:
+   ```bash
+   quickrstack
+   ```
+6. To unlink the tool, run:
+   ```bash
+   npm unlink quickrstack
+   ```
+
 ---
 
 ## 💻 Commands
