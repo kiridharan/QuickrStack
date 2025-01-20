@@ -40,9 +40,8 @@ export async function handler() {
     const isAPIsRequired = await logger.prompt(green('Want to create GET, POST , PUT , DELETE Api for this Table'), {
       type: 'confirm',
     })
-      
 
-    logger.info(`Generating Table schema for ${tableName} in project ${projectConfig.projectName}...`)
+    logger.info(`Generating Table schema for ${tableName} in project ${projectConfig.projectDirectory}...`)
 
     // Determine ORM and generate schema
     switch (projectConfig.orm) {
@@ -74,8 +73,8 @@ export async function handler() {
   }
 }
 
-function generatePrismaSchema(tableName: string, projectConfig: ProjectConfig) {
-  const srcPath = path.resolve(process.cwd(), projectConfig.projectName)
+function generatePrismaSchema(tableName: string, config: { projectDirectory: string }) {
+  const srcPath = path.resolve(process.cwd(), config.projectDirectory)
   const schema = `
   model ${tableName} {
     id        Int      @id @default(autoincrement())
@@ -83,6 +82,7 @@ function generatePrismaSchema(tableName: string, projectConfig: ProjectConfig) {
     updatedAt DateTime @updatedAt
     // Add your fields here
   }
+
   `
   // check for prisma schema file
   const schemaPath = path.join(srcPath + '/src', 'prisma', 'schema.prisma')

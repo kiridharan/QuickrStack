@@ -33,7 +33,11 @@
    ```
 3. Install dependencies:
    ```bash
-   npm install
+   pnpm install
+   ```
+   - 3.1 Build the project:
+   ```bash
+   pnpm run build
    ```
 4. Run the tool:
    ```bash

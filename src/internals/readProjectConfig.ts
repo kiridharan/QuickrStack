@@ -6,6 +6,19 @@ import { green } from 'picocolors'
 export async function readProjectConfig() {
   let currentDirectory = process.cwd()
 
+  const configPath = path.resolve(currentDirectory, 'quickrstack.json')
+
+  if (fs.existsSync(configPath)) {
+    logger.info(green('quickrstack.json file found!'))
+    const projectConfig = fs.readJsonSync(configPath)
+    logger.info(projectConfig + ' ' + currentDirectory)
+    let config = {
+      ...projectConfig,
+      projectDirectory: currentDirectory,
+    }
+    return config
+  }
+
   while (true) {
     logger.info(`Checking for quickrstack.json file in: ${currentDirectory}`)
 
@@ -14,7 +27,13 @@ export async function readProjectConfig() {
     if (fs.existsSync(configPath)) {
       logger.info(green('quickrstack.json file found!'))
       const projectConfig = fs.readJsonSync(configPath)
-      return projectConfig
+
+      logger.info(projectConfig + ' ' + currentDirectory)
+      let config = {
+        ...projectConfig,
+        projectDirectory: currentDirectory,
+      }
+      return config
     } else {
       logger.info('quickrstack.json file not found in the current directory.')
 

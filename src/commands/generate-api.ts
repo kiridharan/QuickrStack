@@ -34,7 +34,7 @@ export async function handler() {
     // Ask for the API name
     const apiName = await logger.prompt(green('What is the API Name?'), { type: 'text' })
 
-    logger.info(`Generating API for ${apiName} in project ${projectConfig.projectName}...`)
+    logger.info(`Generating API for ${apiName} in project ${projectConfig.projectDirectory}...`)
 
     // Check the architecture type and generate code accordingly
     if (projectConfig.architecture === 'clean') {
@@ -48,10 +48,12 @@ export async function handler() {
 }
 
 // Function to generate API for "Clean Architecture"
-export function generateApiForTodosCleanArchitecture(apiName: string, config: { projectName: string }) {
+export function generateApiForTodosCleanArchitecture(apiName: string, config: { projectDirectory: string }) {
   logger.info(`Generating API for ${apiName} in Clean Architecture...`)
 
-  const srcPath = path.resolve(process.cwd(), config.projectName)
+  const srcPath = path.resolve(process.cwd(), config.projectDirectory)
+
+  logger.info(`Generating API for ${apiName} in Clean Architecture...`)
 
   // Ensure routes and controllers directory exist for clean architecture
   const routesPath = path.resolve(srcPath, 'src', 'routes')
@@ -73,10 +75,10 @@ export function generateApiForTodosCleanArchitecture(apiName: string, config: { 
 }
 
 // Function to generate API for "Normal Architecture"
-export async function generateApiForTodosNormalArchitecture(apiName: string, config: { projectName: string }) {
+export async function generateApiForTodosNormalArchitecture(apiName: string, config: { projectDirectory: string }) {
   logger.info(`Generating API for ${apiName} in Normal Architecture...`)
 
-  const srcPath = path.resolve(process.cwd(), config.projectName)
+  const srcPath = path.resolve(process.cwd(), config.projectDirectory)
 
   // Ensure routes and controllers directory exist for normal architecture
   const routesPath = path.resolve(srcPath, 'src', 'routes')
